@@ -16,7 +16,7 @@ public class AetherVisualsMod implements ModInitializer {
 
     @Override
     public void onInitialize() {
-        LOGGER.info(" Aether Visuals — Beauty. Smoothness. Detail. Shock.");
+        LOGGER.info("Aether Visuals — Beauty. Smoothness. Detail. Shock.");
 
         KeyBinding key = KeyBindingHelper.registerKeyBinding(new KeyBinding(
             "key.aethervisuals.open", InputUtil.Type.KEYSYM, GLFW.GLFW_KEY_RIGHT_SHIFT, "Aether Visuals"
@@ -25,5 +25,7 @@ public class AetherVisualsMod implements ModInitializer {
         ClientTickEvents.END_CLIENT_TICK.register(client -> {
             while (key.wasPressed()) client.setScreen(new VisualsScreen());
         });
+
+        EventHook.register();
     }
 }
