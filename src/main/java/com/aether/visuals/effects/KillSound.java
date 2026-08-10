@@ -13,7 +13,7 @@ public class KillSound {
         if (client.player == null) return;
 
         client.getSoundManager().play(
-            PositionedSoundInstance.master(SoundEvents.UI_TOAST_CHALLENGE_COMPLETE.value(), 1.0f, 1.0f)
+            PositionedSoundInstance.master(SoundEvents.UI_TOAST_CHALLENGE_COMPLETE, 1.0f, 1.0f)
         );
     }
 }
