@@ -24,7 +24,7 @@ public class LowHPSound {
 
         float speed = 1.5f - hp;
         client.getSoundManager().play(
-            PositionedSoundInstance.master(SoundEvents.BLOCK_NOTE_BLOCK_BASEDRUM.value(), speed, 0.6f)
+            PositionedSoundInstance.master(SoundEvents.BLOCK_NOTE_BLOCK_BASEDRUM, speed, 0.6f)
         );
     }
 }
