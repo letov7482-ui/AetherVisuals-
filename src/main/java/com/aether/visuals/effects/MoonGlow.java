@@ -7,9 +7,6 @@ import org.joml.Matrix4f;
 import org.lwjgl.opengl.GL11;
 
 public class MoonGlow {
-    /**
-     * Луна светится мягким светом.
-     */
     public static void render(Matrix4f projectionMatrix) {
         if (!VisualsConfig.get("moon_glow")) return;
 
@@ -32,7 +29,7 @@ public class MoonGlow {
         buffer.vertex(cx, cy, 0).color(0.8f, 0.9f, 1f, alpha);
         for (int i = 0; i <= segments; i++) {
             double angle = (double)i / segments * Math.PI * 2;
-            buffer.vertex(cx + Math.cos(angle) * radius, cy + Math.sin(angle) * radius, 0).color(0.8f, 0.9f, 1f, 0f);
+            buffer.vertex(cx + (float)Math.cos(angle) * radius, cy + (float)Math.sin(angle) * radius, 0).color(0.8f, 0.9f, 1f, 0f);
         }
 
         GL11.glEnable(GL11.GL_BLEND);
