@@ -6,9 +6,6 @@ import net.minecraft.client.gui.DrawContext;
 import net.minecraft.entity.effect.StatusEffectInstance;
 
 public class PotionTimer {
-    /**
-     * Таймеры активных зелий на экране.
-     */
     public static void render(DrawContext ctx) {
         if (!VisualsConfig.get("potion_timer")) return;
 
@@ -19,13 +16,12 @@ public class PotionTimer {
         int y = client.getWindow().getScaledHeight() / 2 + 25;
 
         for (StatusEffectInstance effect : client.player.getStatusEffects()) {
-            int duration = effect.getDuration() / 20; // В секундах
+            int duration = effect.getDuration() / 20;
             if (duration <= 0) continue;
 
-            String name = effect.getEffectType().getName().getString();
+            String name = effect.getTranslationKey();
             String text = name + ": " + duration + "s";
-
-            int color = effect.getEffectType().isBeneficial() ? 0xFF00FF88 : 0xFFFF6666;
+            int color = 0xFF00FF88;
 
             ctx.drawTextWithShadow(client.textRenderer, text, x, y, color);
             y += 10;
