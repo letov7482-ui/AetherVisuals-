@@ -18,7 +18,7 @@ public class HitSound {
 
         float pitch = 0.9f + RANDOM.nextFloat() * 0.2f;
         client.getSoundManager().play(
-            PositionedSoundInstance.master(SoundEvents.BLOCK_NOTE_BLOCK_BELL, pitch, 0.8f)
+            PositionedSoundInstance.master(SoundEvents.BLOCK_NOTE_BLOCK_BELL.value(), pitch, 0.8f)
         );
     }
 }
