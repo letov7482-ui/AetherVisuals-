@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "aethervisuals",
+  "version": "1.0.0",
+  "name": "Aether Visuals",
+  "description": "Beauty. Smoothness. Detail. Shock. — 68 visual effects for Minecraft.",
+  "authors": ["Aether"],
+  "license": "MIT",
+  "environment": "client",
+  "entrypoints": { "main": ["com.aether.visuals.AetherVisualsMod"] },
+  "depends": { "fabricloader": ">=0.16.5", "minecraft": "~1.21.4" }
+}
