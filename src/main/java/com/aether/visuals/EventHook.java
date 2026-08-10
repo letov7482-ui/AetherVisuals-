@@ -10,7 +10,6 @@ import net.minecraft.util.ActionResult;
 
 public class EventHook {
     public static void register() {
-        // Хук удара
         AttackEntityCallback.EVENT.register((player, world, hand, entity, hitResult) -> {
             if (world.isClient && entity != null) {
                 float damage = 1.0f;
@@ -24,14 +23,11 @@ public class EventHook {
             return ActionResult.PASS;
         });
 
-        // Хук кадра
         WorldRenderEvents.AFTER_TRANSLUCENT.register(context -> {
             TargetESP.render(context.matrixStack(), context.camera(), context.tickCounter().getTickDelta(true));
-            DamageNumbers.render(context.matrixStack(), context.camera(), context.tickCounter().getTickDelta(true));
             FpsCounter.update();
         });
 
-        // Хук HUD
         HudRenderCallback.EVENT.register((ctx, delta) -> {
             FpsCounter.render(ctx);
             PingDisplay.render(ctx);
@@ -39,10 +35,10 @@ public class EventHook {
             TotemCounter.render(ctx);
             PotionTimer.render(ctx);
             ComboCounter.render(ctx);
-            LowHPVignette.render(ctx, delta);
+            LowHPVignette.render(ctx, delta.getTickDelta(true));
+            DamageNumbers.render(ctx, ctx.getMatrices(), null, delta.getTickDelta(true));
         });
 
-        // Хук тика
         ClientTickEvents.END_CLIENT_TICK.register(client -> {
             CrystalSparkle.tick();
             TrailEffect.tick();
@@ -62,7 +58,6 @@ public class EventHook {
             LowHPSound.tick();
         });
 
-        // Хук сообщений (gg)
         ServerMessageEvents.CHAT_MESSAGE.register((message, sender, params) -> {
             String text = message.getContent().getString().toLowerCase();
             if (text.contains("gg")) GGEffect.spawn();
